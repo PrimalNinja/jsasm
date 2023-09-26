@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<!-- Developed by Julian Cassin. 2019-2020. -->
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/ace/ace.js" charset="utf-8"></script>
+
+		<style type="text/css" media="screen">
+			#ge-input 
+			{			
+				bottom: 0;
+				height: 80%;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 50%;
+			}
+
+			#ge-output
+			{			
+				bottom: 0;
+				height: 80%;
+				left: 50%;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 50%;
+			}
+
+			#ge-consolecontainer
+			{			
+				bottom: 0;
+				height: 10%;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 80%;
+				width: 100%;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+
+			#ge-console
+			{			
+			}
+
+			#ge-controls
+			{			
+				bottom: 0;
+				height: 10%;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 90%;
+				width: 100%;
+			}
+
+			#ge-errors
+			{			
+				bottom: 0;
+				display: none;
+				height: 10%;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 90%;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="ge-input">
+// JSASM v0.1 (6 November 2021) By Julian Cassin:
+// 
+// This is a work in progress JavaScript virtual assembler runner.
+//
+function main()
+{
+	ld(B8, 5);
+	ld(M(1024), B8);
+	ld(A8, M(1024));
+	
+	set(Z, 0);
+
+	while(test(NZ))
+	{
+		call(outA8);
+		dec(A8);
+	}
+}
+
+function outA8()
+{
+	output(1, A8);
+}
+
+call(main);
+</div>
+		<div id="ge-output"></div>
+		<div id="ge-consolecontainer">
+			<div id="ge-console">Console...<br></div>
+		</div>
+		<div id="ge-controls">
+			Debug Assembler: <input type="checkbox" id="debugAssembler" onclick="onReConfig()"> 
+			Include Comments: <input type="checkbox" id="includeComments" onclick="onReConfig()"> 
+			Include Source As Comments: <input type="checkbox" id="includeSourceAsComments" onclick="onReConfig()"> 
+			Include Source Whitespace: <input type="checkbox" id="includeSouceWhitespace" onclick="onReConfig()"> 
+			Include Source Line Numbers: <input type="checkbox" id="includeSourceLineNumbers" onclick="onReConfig()" checked="checked"> 
+			<br><br>
+			<button id="runCode" onclick="onRunCode()">Run Code</button>
+		</div>
+		<!-- <div id="ge-errors"></div> -->
+	</body>
+
+	<!-- <script type="application/javascript" src="js/iftopf.js"></script> -->
+	<script type="application/javascript" src="js/assemble.js"></script>
+	<script type="application/javascript" src="js/runner.js"></script>
+	<script type="application/javascript" src="js/index.js"></script>
+</html>
